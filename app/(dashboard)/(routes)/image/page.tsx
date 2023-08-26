@@ -14,7 +14,7 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { ChatCompletionRequestMessage } from "openai";
+
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
 import { UserAvatar } from "@/components/user-avatar";
@@ -22,30 +22,23 @@ import { BotAvatar } from "@/components/bot-avatar";
 
 const ImagePage = () => {
     const router = useRouter();
-    const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+    const [images, setImages] = useState<string[]>([])
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            prompt: ""
+            prompt: "",
+            amount: "1",
+            resolution: "512x512"
         }
     });
 
     const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try {
-            const userMessage: ChatCompletionRequestMessage = {
-                role: "user",
-                content: values.prompt,
-            };
-            const newMessages = [...messages, userMessage];
+        try {            
 
-            const response = await axios.post("/api/conversation", {
-                messages: newMessages,
-            });
-
-            setMessages((current) => [...current, userMessage, response.data]);
+            const response = await axios.post("/api/image");
 
             form.reset();
 
@@ -96,25 +89,15 @@ const ImagePage = () => {
                 </div>
                 <div className="space-y-4 mt-4">
                     {isLoading && (
-                        <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+                        <div className="p-20">
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && (
-                        <Empty label="No Conversation Started"/>
+                    {images.length === 0 && !isLoading && (
+                        <Empty label="No Images Generated"/>
                     )}
-                    <div className="flex flex-col-reverse gap-y-4">
-                        {messages.map((message) => (
-                            <div
-                                key={message.content}
-                                className={cn("p-8 w-full flex items-start gap-x-8 rounded-lg", message.role === "user" ? "bg-white border border-black/10" : "bg-muted")}
-                            >
-                                {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                                <p className="text-sm">
-                                    {message.content}
-                                </p>
-                            </div>
-                        ))}
+                    <div>
+                        Images will be rendered here
                     </div>
                 </div>
             </div>
