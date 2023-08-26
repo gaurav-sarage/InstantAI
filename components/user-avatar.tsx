@@ -1,6 +1,6 @@
 import { useUser } from "@clerk/nextjs"
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { AvatarFallback } from "@radix-ui/react-avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 
 export const UserAvatar = () => {
     const { user } = useUser();
