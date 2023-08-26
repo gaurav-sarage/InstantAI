@@ -110,7 +110,9 @@ const ConversationPage = () => {
                                 className={cn("p-8 w-full flex items-start gap-x-8 rounded-lg", message.role === "user" ? "bg-white border border-black/10" : "bg-muted")}
                             >
                                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                                {message.content}
+                                <p className="text-sm">
+                                    {message.content}
+                                </p>
                             </div>
                         ))}
                     </div>
