@@ -8,21 +8,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 
 import { Heading } from "@/components/heading";
-import { cn } from "@/lib/utils";
 import { formSchema } from "./constants";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { ChatCompletionRequestMessage } from "openai";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
-import { UserAvatar } from "@/components/user-avatar";
-import { BotAvatar } from "@/components/bot-avatar";
 
-const ConversationPage = () => {
+
+const MusicPage = () => {
     const router = useRouter();
-    const [music, setMusic] = useState<ChatCompletionRequestMessage[]>([]);
+    const [music, setMusic] = useState<string>();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -35,13 +32,11 @@ const ConversationPage = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            setMusic
+            setMusic(undefined);
 
-            const response = await axios.post("/api/conversation", {
-                messages: newMessages,
-            });
+            const response = await axios.post("/api/music", values);
 
-            setMessages((current) => [...current, userMessage, response.data]);
+            setMusic(response.data.audio);
 
             form.reset();
 
@@ -96,8 +91,8 @@ const ConversationPage = () => {
                             <Loader />
                         </div>
                     )}
-                    {messages.length === 0 && !isLoading && (
-                        <Empty label="No Music Generated"/>
+                    {!music && !isLoading && (
+                        <Empty label="No Music Generated" />
                     )}
                     <div>
                         Music will be generated here
@@ -108,4 +103,4 @@ const ConversationPage = () => {
     );
 }
 
-export default ConversationPage;
+export default MusicPage;
