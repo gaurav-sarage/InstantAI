@@ -46,4 +46,4 @@ export const checkApiLimit = async () => {
     } else {
         return false;
     }
-}
+};
