@@ -6,6 +6,7 @@ import { VideoIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { Heading } from "@/components/heading";
 import { formSchema } from "./constants";
@@ -18,6 +19,7 @@ import { Loader } from "@/components/loader";
 
 
 const VideoPage = () => {
+    const proModal = useProModal();
     const router = useRouter();
     const [video, setVideo] = useState<string>();
 
@@ -41,7 +43,9 @@ const VideoPage = () => {
             form.reset();
 
         } catch(error: any) {
-            console.log(error)
+            if(error?.response?.status === 403) {
+                proModal.onOpen();
+            }
         } finally {
             router.refresh()
         }
