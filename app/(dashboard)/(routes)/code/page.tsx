@@ -6,6 +6,7 @@ import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { Heading } from "@/components/heading";
 import { cn } from "@/lib/utils";
@@ -22,6 +23,7 @@ import { BotAvatar } from "@/components/bot-avatar";
 import ReactMarkdown from "react-markdown";
 
 const CodePage = () => {
+    const proModal = useProModal();
     const router = useRouter();
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
@@ -51,7 +53,9 @@ const CodePage = () => {
             form.reset();
 
         } catch(error: any) {
-            console.log(error)
+            if(error?.response?.status === 403) {
+                proModal.onOpen();
+            }
         } finally {
             router.refresh()
         }

@@ -57,7 +57,6 @@ const ConversationPage = () => {
             if(error?.response?.status === 403) {
                 proModal.onOpen();
             }
-            
 
         } finally {
             router.refresh()
