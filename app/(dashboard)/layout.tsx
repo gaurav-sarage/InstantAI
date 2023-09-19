@@ -7,6 +7,8 @@ const DashboardLayout = async ({
 }: {
     children: React.ReactNode;
 }) => {
+    
+    // Get API limit count for the current user and set it in localStorage to be used later on by other components
 
     const apiLimitCount = await getApiLimitCount();
 
