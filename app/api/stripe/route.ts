@@ -30,18 +30,37 @@ export async function GET() {
                 return_url: settingsUrl,
             });
 
-            return new NextResponse(JSON.stringify({ url: stripeSession.url }));
-        }
+            return new NextResponse(JSON.stringify({
+                url: stripeSession.url
+            }));
+        };
 
         const stripeSession = await stripe.checkout.sessions.create({
             success_url: settingsUrl,
             cancel_url: settingsUrl,
-            payment_method_types: ["card"],
+            payment_method_types: ["card", "paypal"],
             mode: "subscription",
             billing_address_collection: "auto",
             customer_email: user.emailAddresses[0].emailAddress,
-            
+            line_items: [
+                {
+                    price_data: {
+                        currency: "INR",
+                        product_data: {
+                            name: "Instant AI",
+                            description: "Unlimited AI Generations",
+                        },
+                        unit_amount: 49900,
+                        recurring: {
+                            interval: "month"
+                        },
+                    },
+                    quantity: 1
+                }
+            ],
         })
+
+        
 
     }
     catch (error) {
