@@ -58,6 +58,9 @@ export async function GET() {
                     quantity: 1
                 }
             ],
+            metadata: {
+                userId,
+            },
         })
 
         
