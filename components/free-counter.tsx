@@ -7,14 +7,17 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react"
 import { useProModal } from "@/hooks/use-pro-modal";
+import { isPageStatic } from "next/dist/build/utils";
 
 interface FreeCounterProps {
     apiLimitCount: number;
+    isPro: boolean;
 };
 
 
 export const FreeCounter = ({
-    apiLimitCount = 0
+    apiLimitCount = 0,
+    isPro = false
 }: FreeCounterProps) => {
     const proModal = useProModal();
     const [mounted, setMounted] = useState(false);
@@ -24,6 +27,10 @@ export const FreeCounter = ({
     }, []);
 
     if(!mounted) {
+        return null;
+    }
+
+    if(!isPro) {
         return null;
     }
 
