@@ -34,7 +34,7 @@ export async function POST(req: Request) {
             });
         }
 
-        await prismadb.userSubscription.create({
+        await prismadb?.userSubscription.create({
             data: {
                 userId: session?.metadata?.userId,
                 stripeSubscriptionId: subscription.id,
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
             session.subscription as string
         );
 
-        await prismadb.userSubscription.update({
+        await prismadb?.userSubscription.update({
             where: {
                 stripeSubscriptionId: subscription.id,
             },
