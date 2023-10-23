@@ -1,5 +1,7 @@
 # Software as a Service Platform
 
+using Next.js 13 App Router, React, Prisma, Clerk, Shadcn, Tailwind, Webhooks, and Stripe. 
+
 ## Description
 
 The AI SaaS Platform is a cutting-edge web application that offers five powerful AI tools designed to address a variety of business needs.
