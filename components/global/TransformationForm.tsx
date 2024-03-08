@@ -71,18 +71,18 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
 
     const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
         const imageSize = aspectRatioOptions[value as AspectRatioKey]
-
+    
         setImage((prevState: any) => ({
-            ...prevState,
-            aspectRatio: imageSize.aspectRatio,
-            width: imageSize.width,
-            height: imageSize.height,
+          ...prevState,
+          aspectRatio: imageSize.aspectRatio,
+          width: imageSize.width,
+          height: imageSize.height,
         }))
-
+    
         setNewTransformation(transformationType.config);
-
-        return onChangeField(value);
-    }
+    
+        return onChangeField(value)
+      }
 
     const onInputChangeHandler = (fieldName: string, value: string, type: string, onChangeField: (value: string) => void) => {
         debounce(() => {
@@ -145,7 +145,7 @@ const TransformationForm = ({ action, data = null, userId, type, creditBalance, 
                                 <SelectContent>
                                     {Object.keys(aspectRatioOptions).map((key) => (
                                         <SelectItem key={key} value={key} className="select-item">
-                                            {aspectRatioOptions[key as AspectRatioKey].label}
+                                            {aspectRatioOptions[key as AspectRatioKey].title}
                                         </SelectItem>
                                     ))}
                                 </SelectContent>
