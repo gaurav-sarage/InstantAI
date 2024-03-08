@@ -146,7 +146,7 @@ export const transformationTypes = {
     remove: {
         type: "remove",
         title: "Object Remove",
-        subtitle: "Identify & eliminate objects from images.",
+        subTitle: "Identify & eliminate objects from images.",
         config: {
             remove: { prompt: "", removeShadow: true, multiple: true },
         },
@@ -155,7 +155,7 @@ export const transformationTypes = {
     recolor: {
         type: "recolor",
         title: "Object Recolor",
-        subtitle: "Identify & recolor objects from the image.",
+        subTitle: "Identify & recolor objects from the image.",
         config: {
             recolor: { prompt: "", to: "", multiple: true },
         },
@@ -167,7 +167,7 @@ export const transformationTypes = {
 export const aspectRatioOptions = {
     "1:1": {
         aspectRatio: "1:1",
-        label: "Sqaure (1:1)",
+        label: "Square (1:1)",
         width: 1000,
         height: 1000,
     },
