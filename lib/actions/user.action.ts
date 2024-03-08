@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import User from "../database/models/user.model";
 import { connectToDB } from "../database/db";
 import { handleError } from "../utils";
+import { CreateUserParams, UpdateUserParams } from "@/types";
 
 
 // Create
