@@ -5,12 +5,10 @@ import qs from "qs";
 import { twMerge } from "tailwind-merge";
 
 import { aspectRatioOptions } from "@/constants";
-import { FormUrlQueryParams, RemoveUrlQueryParams } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
 
 // ERROR HANDLER
 export const handleError = (error: unknown) => {
@@ -52,7 +50,7 @@ const toBase64 = (str: string) =>
 export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
-
+// ==== End
 
 // FORM URL QUERY
 export const formUrlQuery = ({
@@ -67,7 +65,6 @@ export const formUrlQuery = ({
   })}`;
 };
 
-
 // REMOVE KEY FROM QUERY
 export function removeKeysFromQuery({
   searchParams,
@@ -79,7 +76,6 @@ export function removeKeysFromQuery({
     delete currentUrl[key];
   });
 
-
   // Remove null or undefined values
   Object.keys(currentUrl).forEach(
     (key) => currentUrl[key] == null && delete currentUrl[key]
@@ -87,7 +83,6 @@ export function removeKeysFromQuery({
 
   return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
 }
-
 
 // DEBOUNCE
 export const debounce = (func: (...args: any[]) => void, delay: number) => {
@@ -97,7 +92,6 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
     timeoutId = setTimeout(() => func.apply(null, args), delay);
   };
 };
-
 
 // GE IMAGE SIZE
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
@@ -114,7 +108,6 @@ export const getImageSize = (
   }
   return image?.[dimension] || 1000;
 };
-
 
 // DOWNLOAD IMAGE
 export const download = (url: string, filename: string) => {
@@ -136,7 +129,6 @@ export const download = (url: string, filename: string) => {
     })
     .catch((error) => console.log({ error }));
 };
-
 
 // DEEP MERGE OBJECTS
 export const deepMergeObjects = (obj1: any, obj2: any) => {
