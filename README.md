@@ -1,3 +1,13 @@
+<h1 align="center"> **Warnings below** </h1>
+
+⚠️:  **Important:** The payment gateway is still a WIP because Stripe does not allow payments from India in test mode.
+
+⚠️: Unable to add upload Image on production using Cloudinary. Will fix the error soon.
+<br> <br>
+
+
+<h1 align="center"> **NextJS generated README file** </h1>
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
