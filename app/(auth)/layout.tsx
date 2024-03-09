@@ -1,11 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const Login = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className='auth'>
-      {children}
-    </main>
+    <main className="auth">{children}</main>
   )
 }
 
-export default Login
+export default Layout
