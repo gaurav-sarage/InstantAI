@@ -5,42 +5,211 @@
 ⚠️: Unable to add upload Image on production using Cloudinary. Will fix the error soon.
 <br> <br>
 
+## 📌 Overview
 
-<h1 align="center"> **NextJS generated README file** </h1>
+InstantAI is an AI Powered Image Generator App under development. It leverages various libraries/tools like Clerk/Next.js, Cloudinary, React, Stripe, MongoDB, TailwindCSS, TypeScript, and more for seamless functionality.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 🔍 Table of Contents
 
-## Getting Started
+* [📁 Project Structure](#project-structure)
 
-First, run the development server:
+* [📝 Project Summary](#project-summary)
+
+* [💻 Stack](#stack)
+
+* [⚙️ Setting Up](#setting-up)
+
+* [🚀 Run Locally](#run-locally)
+
+* [🙌 Contributors](#contributors)
+
+* [☁️ Deploy](#deploy)
+
+* [📄 License](#license)
+
+## 📁 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── .eslintrc.json
+├── .gitignore
+├── README.md
+├── app
+│   ├── (auth)
+│   │   ├── layout.tsx
+│   │   ├── sign-in
+│   │   │   └── [[...sign-in]]
+│   │   │       └── page.tsx
+│   │   └── sign-up
+│   │       └── [[...sign-up]]
+│   │           └── page.tsx
+│   ├── (root)
+│   │   ├── credits
+│   │   │   └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── profile
+│   │   │   └── page.tsx
+│   │   └── transformations
+│   │       ├── [id]
+│   │       │   ├── page.tsx
+│   │       │   └── update
+│   │       │       └── page.tsx
+│   │       └── add
+│   │           └── [type]
+│   │               └── page.tsx
+│   ├── api
+│   │   └── webhooks
+│   │       ├── clerk
+│   │       │   └── route.ts
+│   │       └── stripe
+│   │           └── route.ts
+│   ├── favicon.ico
+│   ├── globals.css
+│   └── layout.tsx
+├── components.json
+├── components
+│   ├── shared
+│   │   ├── Checkout.tsx
+│   │   ├── Collection.tsx
+│   │   ├── CustomField.tsx
+│   │   ├── DeleteConfirmation.tsx
+│   │   ├── Header.tsx
+│   │   ├── InsufficientCreditsModal.tsx
+│   │   ├── MediaUploader.tsx
+│   │   ├── MobileNav.tsx
+│   │   ├── Search.tsx
+│   │   ├── Sidebar.tsx
+│   │   ├── TransformationForm.tsx
+│   │   └── TransformedImage.tsx
+│   └── ui
+│       ├── alert-dialog.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── form.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── pagination.tsx
+│       ├── select.tsx
+│       ├── sheet.tsx
+│       ├── toast.tsx
+│       ├── toaster.tsx
+│       └── use-toast.ts
+├── constants
+│   └── index.ts
+├── lib
+│   ├── actions
+│   │   ├── image.actions.ts
+│   │   ├── transaction.action.ts
+│   │   └── user.actions.ts
+│   ├── database
+│   │   ├── db.ts
+│   │   ├── models
+│   │   │   ├── image.model.ts
+│   │   │   ├── transaction.model.ts
+│   │   │   └── user.model.ts
+│   │   └── mongoose.ts
+│   └── utils.ts
+├── middleware.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── public
+│   ├── assets
+│   │   ├── icons
+│   │   │   ├── add.svg
+│   │   │   ├── bag.svg
+│   │   │   ├── camera.svg
+│   │   │   ├── caret-down.svg
+│   │   │   ├── check.svg
+│   │   │   ├── close.svg
+│   │   │   ├── coins.svg
+│   │   │   ├── credit-coins.svg
+│   │   │   ├── cross.svg
+│   │   │   ├── download.svg
+│   │   │   ├── filter.svg
+│   │   │   ├── free-plan.svg
+│   │   │   ├── home.svg
+│   │   │   ├── image.svg
+│   │   │   ├── menu.svg
+│   │   │   ├── photo.svg
+│   │   │   ├── profile.svg
+│   │   │   ├── scan.svg
+│   │   │   ├── search.svg
+│   │   │   ├── spinner.svg
+│   │   │   └── stars.svg
+│   │   └── images
+│   │       ├── banner-bg.jpg
+│   │       ├── coins.jpg
+│   │       ├── gradient-bg.svg
+│   │       ├── logo-icon.svg
+│   │       └── logo-text.svg
+│   ├── favicon.ico
+│   ├── logo-icon.png
+│   ├── logo.png
+│   ├── next.svg
+│   └── vercel.svg
+├── tailwind.config.ts
+├── tsconfig.json
+└── types
+    └── index.d.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📝 Project Summary
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [**app**](app): Core application logic and structure.
+- [**components**](components): Reusable UI components.
+- [**lib**](lib): Library for actions and database models.
+- [**public**](public): Publicly accessible assets.
+- [**constants**](constants): Constants and configurations.
+- [**types**](types): Type definitions.
+- [**app/(auth)**](app/(auth)): Authentication-related functionality.
+- [**app/(root)**](app/(root)): Root-level application features.
+- [**app/api**](app/api): API endpoints.
+- [**public/assets**](public/assets): Image and icon assets.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 💻 Stack
 
-## Learn More
+- [react-hook-form](https://github.com/react-hook-form/react-hook-form): Simplifies form management and validation.
+- [mongoose](https://mongoosejs.com/): Facilitates MongoDB data modeling and interaction.
+- [next](https://nextjs.org/): Framework for server-rendered React applications.
+- [stripe](https://stripe.com/docs): Enables payment processing integration.
+- [tailwindcss](https://tailwindcss.com/): Utility-first CSS framework for styling.
+- [typescript](https://www.typescriptlang.org/): Adds static typing to JavaScript for enhanced development.
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Setting Up
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Your Environment Variable
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Step 1
 
-## Deploy on Vercel
+- Step 2
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 Run Locally
+1.Clone the InstantAI repository:
+```sh
+git clone https://github.com/gaurav-sarage/InstantAI
+```
+2.Install the dependencies with one of the package managers listed below:
+```bash
+pnpm install
+bun install
+npm install
+yarn install
+```
+3.Start the development mode:
+```bash
+pnpm dev
+bun dev
+npm run dev
+yarn dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## 🙌 Contributors
+<a href="https://github.com/gaurav-sarage/InstantAI/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=gaurav-sarage/InstantAI" />
+</a>
+
+## ☁️ Deploy
+
+`[Application name](Your App URL)`
