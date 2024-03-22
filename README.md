@@ -210,6 +210,6 @@ yarn dev
 <img src="https://contrib.rocks/image?repo=gaurav-sarage/InstantAI" />
 </a>
 
-## ☁️ Deploy
+## ☁️ Live Link
 
-`[Application name](Your App URL)`
+[InstantAI](https://instantai.vercel.app/)
