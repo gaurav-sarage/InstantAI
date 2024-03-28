@@ -205,11 +205,10 @@ npm run dev
 yarn dev
 ```
 
-## 🙌 Contributors
-<a href="https://github.com/gaurav-sarage/InstantAI/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=gaurav-sarage/InstantAI" />
-</a>
-
 ## ☁️ Live Link
 
 [InstantAI](https://instantai.vercel.app/)
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/gaurav-sarage/InstantAI.svg?variant=dark)](https://starchart.cc/gaurav-sarage/InstantAI)
+
